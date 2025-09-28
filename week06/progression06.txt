@@ -1,0 +1,47 @@
+functional programming
+    - คือ การออกแบบ function ให้มาcompose(ประกอบ)กันแล้วสามารถแก้ไขปัญหาที่ซับซ้อนขึ้นได้   
+    
+    first-class citizens 
+        - คือ การที่เราสามารถใช้งานfunction เหมือนตัวแปรปกติ  
+            - เช่น การเอาค่าfunction ให้กับตัวแปรที่เราจะเอาfunction ส่งไปเป็นพารามิเตอร์ แล้วเราจะreturn function ออกมาทำงาน
+        - ข้อแนะนำในการออกแบบfunction คือ การออกแบบfunction ที่หลีกเลี่ยงการ changing state และ mutable data คือ function ไม่ควรเปลี่ยนoriginal data(การไม่ควรเปลี่ยนข้อมูลภายในหรือไปเปลี่ยนข้อมูลโครงสร้าง)
+    
+    Declarative กลุ่มที่เขียนprogram ที่เป็นfunctionเป็นฐาน(functional programming)
+        - คือ การเขียนโค้ดที่บอกว่าต้องทำอะไร 
+            - เช่น functional programming, sql command
+
+    Imperative 
+        - คือ การเขียนโค้ดบอกวิธีว่าต้องทำอย่างไร บอก step by step
+            - เช่น for loop
+
+    Higher-Order function (function ระดับสูง)
+        - คือ function ที่รับfunction มาเป็นพารามิเตอร์ หรือ return functionออกไป ซึ่งfunction นั้นก้ต้องรองรับ functionอื่น ให้เข้ามาประกบกับการทำงานกับfunction แล้วทำให้มันทำงานได้มากขึ้นได้หลากหลายขึ้น
+            - เช่น filter หรือ map เพราะรับcallbackเข้าไปทำงาน
+
+    Pure function
+        - คือ functionที่ส่งinputเดียวกัน แล้วการันตีผลลัพธ์เดียวกันเสมอ โดยห้ามแตะต้องตัวแปรนอกscope functionตังเอง
+            - ตัวแปรภายใน function มี 2ลักษณะ 1.พารามิเตอร์ 2.ตัวแปรที่สร้างขึ้นมาให้ใต้ {}
+   
+    Function Composition
+        - การเอาfunction หลายๆfunction มาประกอบกันเพื่อแก้ไขปัญหาที่มันซับซ้อนขึ้น
+    
+    Function Types
+        - Anonymous function
+            - function แบบไม่มีชื่อ
+        - Named function
+            - function แบบมีชื่อ
+        - inner (nested) function
+            - เป็นfunction ที่ซ้อนfunction
+                - outer function คือ function ที่ครอบ function ทั้งหมด 
+                ข Inner function คือ function ที่อยู่ภายใต้หรือข้างใน outer function
+            - กฎ 1. nested function ถูกเรียกได้ผ่าน outer function 
+        - function scope
+            - ตัวแปรที่ประกาศในfunctionจะไม่สามารถถูกอ้างถึงได้จาก outside
+            - function สามารถ access ตัวแปรทั้งหมด และ function ที่ defined ในscope
+            - function ที่defined อยู่ในระดับ global(ไม่ได้ซ้อนอยู่ไม่ได้เป็นnested) สามารถaccess ตัวแปรทั้งหมดใน global scope และ function ที่อยู่ inside another function(nested function) สามารถอ้างถึงตัวแปรทั้งหมดที่parentของมัน และก็ที่ parentมันอ้างถึงด้วย
+        - Closures
+            - คือ function ที่จะรักษาstate ตัวแปรต่างๆที่มันเกี่ยวข้อง
+            - ฟังก์ชันภายใน (inner function) ที่สามารถ “จดจำ” และเข้าถึง ตัวแปรใน scope ของฟังก์ชันแม่ (outer function) ได้ แม้ว่า outer function จะถูกเรียกทำงานเสร็จไปแล้วก็ตาม
+            - คุณสมบัติ 1.เป็น nested function 2. มันจะอ้างถึงตัวแปรที่scope ที่มันเป็นตัวแปรภายในfunctonของมันรวมทั้ง outer หรือ global ได้ 3. outer ต้อง return nested function ที่เป็น Closures ออกไป เพราะเมื่องั้นภายนอกเรียกไม่ได้
+        
+                
