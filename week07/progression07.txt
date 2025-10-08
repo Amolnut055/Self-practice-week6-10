@@ -1,1 +1,35 @@
-Dom
+Document Object Model (DOM)
+    - คือ แบบจำลองโครงสร้างเอกสาร ที่ใช้แทนหน้าเว็บ HTML ในรูปแบบของ โครงสร้างต้นไม้ที่มีลำดับชั้น (hierarchical tree) ของnodeต่างๆ 
+    - ทำให้สามารถเลือก เพิ่ม ลบ และแก้ไขส่วนต่าง ๆ ของหน้าเว็บได้
+    - DOM เป็นการcaptureเอกสารโครงสร้างเอกสารที่ไม่ขึ้นกับภาษาprogramming สามารถใช้กับภาษาใดๆก็ได้
+    - ประโยชน์ 
+        สามารถเข้าใจและเข้าถึงส่วนประกอบต่างๆ ของหน้าเว็บ HTML ได้
+    <script> tag placement
+    - ถ้าเราแนบjs. ที่<head> คือมันจะdownloads parsed และประมวลผลก่อนที่pageตรงbodyมันจะredering 
+    - ถ้าpageไหนของjs. มีความซับซ้อนหรือปริมาณเยอะจะทำให้มันช้าทำให้ browserเกิดpage ที่blank 
+        - ดังนั้นเราควรใส่<script>ในtagของ<body>ก่อนปิดtag
+    - เมื่อ browser โหลด page เข้ามามันจะจักการทุกอย่างผ่านDOM ซึ่งทำให้เอกสารทั้งหมดมองเป็น Document object ซึ่งในDocument object ก็จะมีnode type ประเภทต่างๆ
+    - Document object เป็น root node ของเอกสารที่คลุมnode อื่นๆ
+        - nodeหลักที่เราจะใช้ element node, text node, attribute node, comment node 
+        - white spaceที่อยู่ระหว่างtag ก็นับเป็น text node
+        - root element คือ node แรกที่คลุมnode ทั้งหมดของเอกสาร ตัวอย่างคือ <HTML>
+        - root node คือ logical node(ไม่มีอยุ่จริงในเอกสาร) แต่มันต้องการสร้างขึ้นมาเพื่อที่จะคลุมnodeในเอกสารทั้งหมด ตั้งแต่root elementลงมา
+        - root element(documnet element) != root node(document node)  
+    - ถ้ามีคำว่าElement ตรงกลางหรือท้าย แปลว่าสนใจเฉพาะNode type ที่เป็นElement node type เท่านั้น
+        - สนใจแค่ Element Node เช่น <div>, <p>, <img>
+    - ถ้ามีแค่คำว่่าNodeและไม่มีคำว่าElement หมายถึงว่าไม่สนใจว่าเป็นElement Node มั้ย สนใจแต่ว่าเป็นNode Type ใดๆ ได้หมดเลย
+        - สนใจNode type ทั้งหมด
+        - Node Types
+            - Element Node คือ โหนดที่แทนแท็ก HTML แต่ละตัว 
+                - เช่น <div>, <p>, <img>
+            - Attribute Node คือ โหนดที่แทนคุณสมบัติของแท็ก
+                - เช่น class="hero", src="image.jpg"
+            - Text Node คือ โหนดที่แทนข้อความภายในแท็ก
+                - เช่น "Hello World"
+            - Comment Node คือ โหนดที่แทนคอมเมนต์ใน HTML
+                - <!-- comment -->
+            - Document Node คือ โหนดรากของเอกสารทั้งหมด
+                - document (ตัว DOM เอง)
+    -
+    -
+    -

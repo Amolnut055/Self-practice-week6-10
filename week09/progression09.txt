@@ -1,0 +1,16 @@
+Three Phases Event Flow
+    - In the capturing Phase 
+        - บนลงล่าง 1.document 2.html 3.body 4.div
+    - In the target Phase
+        -
+    - In the Bubbling Phase
+        - ล่างขึ้นบน 1.div 2.body 3.html 4.Document
+Event
+    -
+
+Way of using Web Event
+    - Event Handlers Properties 
+    - Adding and removing event Handlers
+        -
+        -
+        -
