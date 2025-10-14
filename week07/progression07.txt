@@ -19,17 +19,24 @@ Document Object Model (DOM)
         - สนใจแค่ Element Node เช่น <div>, <p>, <img>
     - ถ้ามีแค่คำว่่าNodeและไม่มีคำว่าElement หมายถึงว่าไม่สนใจว่าเป็นElement Node มั้ย สนใจแต่ว่าเป็นNode Type ใดๆ ได้หมดเลย
         - สนใจNode type ทั้งหมด
-        - Node Types
-            - Element Node คือ โหนดที่แทนแท็ก HTML แต่ละตัว 
-                - เช่น <div>, <p>, <img>
-            - Attribute Node คือ โหนดที่แทนคุณสมบัติของแท็ก
+        - Node Types ที่ใช้บ่อยๆ
+            - ELEMENT_NODE คือ โหนดที่แทนแท็ก HTML แต่ละตัว 
+                - value = 1
+                - เช่น <div>, <p>, <img>    
+            - ATTRIBUTE_NODE คือ โหนดที่แทนคุณสมบัติของแท็ก
+                - value = 2
                 - เช่น class="hero", src="image.jpg"
-            - Text Node คือ โหนดที่แทนข้อความภายในแท็ก
+            - TEXT_NODE คือ โหนดที่แทนข้อความภายในแท็ก
+                - value = 3
                 - เช่น "Hello World"
-            - Comment Node คือ โหนดที่แทนคอมเมนต์ใน HTML
-                - <!-- comment -->
-            - Document Node คือ โหนดรากของเอกสารทั้งหมด
+            - COMMENT_NODE คือ โหนดที่แทนคอมเมนต์ใน HTML
+                -value = 8
+                -   เช่น <!-- comment -->
+            - DOCUMENT_NODE คือ โหนดรากของเอกสารทั้งหมด (Root node)
+                - value = 9
                 - document (ตัว DOM เอง)
-    -
-    -
-    -
+    - คำสั่งที่เป็นการเข้าถึงและจัดการกับ attribute 
+        - get all attribute ออกมาและเข้าถึงชื่อ ใช้ .name เข้าถึง valueก็ใช้ .value รู้ชื่อแต่ไม่รู้ชื่อแต่ไม่รู้ค่าก็ใช้ get attribute
+    
+    
+        

@@ -55,3 +55,36 @@ for (let i = 0; i < divAttrs.length; i++) {
 //แบบ2
 console.log(divElement.getAttribute("id")) //find attribute value
 console.log(divElement.getAttribute("style")) //find attribute value
+
+//1. What is the node type of first child of root node
+// const firstChildRootNode = document.firstChild.nodeType
+// console.log(firstChildRootNode)
+console.log(document.firstChild.nodeType)
+//2. if node type is an element node, display "Hello, HTML node", otherwise, display "Hello, any node"
+if (document.firstChild.nodeType === Node.ELEMENT_NODE) {
+  console.log("Hello, HTML node")
+}
+else {
+  console.log("Hello, any node")
+}
+
+//1. create <p></p>
+const pElement = document.createElement("p") //<p></p>
+//2. create id="p5"
+//sol#1
+// const idAttr = document.createAttribute("id")
+// idAttr.value = "p5"
+//Sol#2 ถ้าใช้วิธีนี้ไม่ต้องทำ 3
+pElement.setAttribute("id", "p5")
+//3. binding id="p5" to <p>
+// pElement.setAttributeNode(idAttr) //<p id="p5"></p5>
+//4. create text value '#5'
+//sol#1
+// const pText = document.createTextNode("#5")
+//sol#2
+pElement.textContent = "#5"
+//5. binding '#5' to <p>
+// pElement.appendChild(pText) //<p id="p5">#5</p5>
+//6. binding <p id="p5">#5</p5> to <body>
+const body = document.body
+body.appendChild(pElement) //<body>...<p id="p5">#5</p5></body
