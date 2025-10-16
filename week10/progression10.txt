@@ -1,0 +1,29 @@
+Client-Side Storages
+    - HTTP Cookies
+         -Introduction to Cookies
+            - HTTP Cookies (web Cookies, brower Cookies)
+
+    - Web Storages
+        -
+        
+    - indexedDB
+
+Cookies vs. Session Storage vs. Local Storage
+    - Cookies
+        -
+        -
+        -
+        - 
+    - Session Storage
+        -
+        -
+        -
+        -
+    - Local Storage
+        - ใช้ได้ตลอดไม่มีวันหมดอายุ แต่มีความเสี่ยงความเสียหาย
+        -
+        -
+        - 
+
+
+

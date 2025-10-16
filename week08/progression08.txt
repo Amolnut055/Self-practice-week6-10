@@ -1,0 +1,56 @@
+Selecting Elements
+    - getElementById("...") ให้เราระบุค่าid แล้วมันจะหา objectที่มี idตรงกับidที่เราระบุไว้ให้เรา
+        - ถ้าไม่เจอจะคืนค่าNull คือไม่เจอ
+        - return ได้Element เดียวหรือ null
+    - HTMLColection 
+        - querySelector("#...") ผลลัพธ์คือตัวเเรกของelement ที่เป็น descendant เหมือน getElementById
+            - จะ return node แค่Node เดียวที่เป็นผลลัพธ์ที่ตรงกับcss selector ที่เรากำหนดไว้ หรือเป็นNullถ้าไม่เจอ
+            - return ได้Element เดียวหรือ null
+        - getElementsByName()
+        - return ได้ collection
+            - ใช้สำหรับ query ที่เรารู้ชื่อ Attribute Name
+    - NodeList 
+        - getElementsByTagName()
+            - return ได้ collection
+            - ใช้สำหรับ query ที่เรารู้ชื่อTag
+        - getElementsByClassName()
+            - return ได้ collection
+            - ใช้สำหรับ query ที่เรารู้ชื่อClass
+- กรณีที่เราจะค้นหาข้อมูลที่มากกว่า1node เราจะใช้.querySelectorAll("#...")
+- querySelector กับ querySelectorAll เป็นNodelist
+- Array.from คือการconvertเพื่อให้ใช้array methodได้
+
+HTMLColection (live) vs NodeList (static)
+    - HTMLColection (live)
+        - เพิ่ม Elements ใหม่หลังจากreder จะมีการupdate
+    - NodeList (static)
+        - เพิ่ม Elements ใหม่หลังจากreder จะไม่มีการupdate
+Manipulating Nodes
+    - insertBefore(newNode, refNode) ใช้แทรก (insert) element ใหม่ ก่อนหน้า element ที่กำหนด
+    - removeChild(refNode) ใช้ลบ element ลูก (child) ออกจาก element แม่
+    - replaceChild(newNode, refNode) ใช้แทนที่ element เดิมด้วย element ใหม่
+        - newNode  คือelement ใหม่ที่จะเพิ่มเข้าไป
+        - referenceNode  คือelement ที่เราจะให้ “newNode” แทรกก่อนหน้า
+dataset and classlist
+    - dataset
+        - ใช้ เข้าถึงและจัดการค่า custom data
+        - เวลาเรียกใช้ element.dataset.myAttribute หรือ element.dataset.["myAttribute"]   
+    - classlist
+        - ใช้ เพิ่ม, ลบ, สลับ, ตรวจสอบ class ได้สะดวกมาก
+        - Key features and method
+            - add(className1, className2,...) เพิ่มคลาส
+            - remove(className1, className2,...) ลบคลาส
+            - toggle(className, force) สลับคลาส
+            - contains(className) ตรวจสอบคลาส
+            - replace(oldClassName, newClassName) ใช้ แทนที่ class เก่าด้วย class ใหม่
+            - item(index) ใช้ เข้าถึง class ตามลำดับ index ของ element
+            - length ใช้เช็คจำนวนclass ของelement
+System Dialogs
+    - มีอยู่ 3แบบ หน้าตาขึ้นอยู่กับOS
+        - alert() เอาไว้เเสดงinformationที่เราจะสื่อ มีแค่ปุ่มokรับทราบข้อมูล
+        - confirm() เอาไว้ถามยืนยันกับuser มีปุ่มok กับ cancel ผลลัพธ์จะเป็น Boolean ok = true ,cancel = false, ไม่ตอบก็เป็นfalse
+        - prompt() เอาไว้รับข้อมูลจากuser ถ้ากดข้อมูลอะไรให้แล้วกดokเราก็เอาข้อมุลไปเก็บในตัวแปรเอาไปใช้งานต่อได้ แต่ถ้ากด cancel จะได้ผลเป็น null
+            - เวลาเราใส่prompt จะมีparametorอยู่2ตัว ก็คือ text to display กับ prompt display
+    
+
+
