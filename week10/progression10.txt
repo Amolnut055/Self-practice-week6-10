@@ -17,7 +17,6 @@ Client-Side Storages
             - LocalStorage (อายุยาว)
                 - ไม่มีวันตาย ยกเว้นสั่งลบหรือ manualเข้าไปลบหรือใช้ JSเข้าไปลบ
                 - ความจุ 5MB
-
     - indexedDB
 
 Cookies vs. Session Storage vs. Local Storage
@@ -102,3 +101,12 @@ Cookie in Js
 
 encodeURIComponent()
     - มันจะ converseตัวสัญลักษณ์พิเศษของมันทั้งหมดให้กลายเป็นรหัสอื่น
+
+setItem(key, value)
+    - ใช้สำหรับเก็บข้อมูลลงใน storage
+        - key คือ ชื่อที่ใช้เรียกข้อมูล
+        - value คือ ค่าที่ต้องการเก็บ
+    
+
+getItem(key)
+    - ใช้สำหรับดึงข้อมูลที่เก็บไว้โดยใช้ชื่อ key เดิม

@@ -1,4 +1,4 @@
-import { addQuote, deleteQuote, updateQuote, getAllQuotes } from './quote.js'
+import { addQuote, deleteQuote, updateQuote, getAllQuotes, getQuoteById } from './quote.js'
 
 const quoteList = document.getElementById('quote-list')
 const form = document.getElementById('quoteForm')
@@ -114,8 +114,18 @@ function showRandomQuote() {
 // ==============================
 // Write your code here
 // ==============================
-function loadQuotes() {}
-function saveQuotes() {}
+function loadQuotes() {
+  const localQuotes = [...JSON.parse(localStorage.getItem("quotes"))]
+  if (localQuotes.length > 0) localQuotes.forEach((quote) => {
+    const { content, author } = quote
+    addQuote(content, author)
+  })
+  quotes = getAllQuotes()
+}
+
+function saveQuotes() {
+  localStorage.setItem("quotes", JSON.stringify(quotes))
+}
 
 loadQuotes()
 renderQuotes()

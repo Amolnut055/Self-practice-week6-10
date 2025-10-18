@@ -1,12 +1,12 @@
 // cookie
-// import { CookieUtil } from "./CookieUtil.js";
-// CookieUtil.set("cardID", "abc123", new Date(2025, 9, 20))
-// console.log(document.cookie)
-// console.log(CookieUtil.get("cardID"))
-// CookieUtil.unset("cardID")
-// document.cookie = "theme=dark"
-// document.cookie = `theme=light;expires=${new Date(2025, 9, 16)}`
-// document.cookie = "username=amolnut; max-age=60"
+import { CookieUtil } from "./CookieUtil.js";
+CookieUtil.set("cardID", "abc123", new Date(2025, 9, 20))
+console.log(document.cookie)
+console.log(CookieUtil.get("cardID"))
+CookieUtil.unset("cardID")
+document.cookie = "theme=dark"
+document.cookie = `theme=light;expires=${new Date(2025, 9, 16)}`
+document.cookie = "username=amolnut; max-age=60"
 
 //sessionStorage
 // let like = sessionStorage.getItem("like")
