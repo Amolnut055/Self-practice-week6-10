@@ -2,28 +2,103 @@ Client-Side Storages
     - HTTP Cookies
          -Introduction to Cookies
             - HTTP Cookies (web Cookies, brower Cookies)
-
+            - สามารถส่งข้อมูลผ่านProtocol ระหว่ง Client กับ Server ได้เอามาใช้ประโยชน์ได้
+            - ถ้าสร้างCookiesเยอะเกินความจำเป็นจะทำให้เกิด worsen performance
+            - สเปคของcoolkies
+                - 1 Cookies เก็บได้ประมาณ 4k
+                - tatollyที่ browser เก็บได้แค่300 Cookies 
+                - ต่อDomain สร้างได้ไม่เกิน 20cookies
+                - ถ้ามีพื้นที่ไม่พอก็จะเลือกลบอันที่เก่าที่สุด
     - Web Storages
-        -
-        
+        - Storage interface
+            - sessionStorage (อายุสั้น)
+                - single session ปิดbrowserปิดTab เปิดTabใหม่หาย
+                - ความจุ 5MB
+            - LocalStorage (อายุยาว)
+                - ไม่มีวันตาย ยกเว้นสั่งลบหรือ manualเข้าไปลบหรือใช้ JSเข้าไปลบ
+                - ความจุ 5MB
+
     - indexedDB
 
 Cookies vs. Session Storage vs. Local Storage
     - Cookies
-        -
-        -
-        -
-        - 
+        - เก็บ Name Value Domain(เราใช้Webไหนควรเป็นDomain Web นั้น 
+        ถ้าเป็น Domainอื่นที่เราไม่ได้ติดต่อ เรียกว่า Third Party Cookies) Path Expires/Max-Age(วันหมดอายุ) Size(ขนาดเก็บไม่เกิน4K(4000Byte))
+            -  Third Party Cookies คือ Webแอบแฝงที่เราไม่ได้ติดต่อโดยตรง
+        - Cookiesเป็น Client-Side Storagesเดียวที่ส่งผ่านNetworkก็คือ HTTP Protocol ไปยัง Serverได้ 
+        และ Serverส่งกลับมาSetที่ Cookiesแล้ว Cookiesนั้นก็สามารถส่งไปที่Serverได้ตามDomainและPathที่เกี่ยวข้อง
+        - ถ้าcookies set http only แล้วjsเข้าไปอ่านจะได้undefined (มันอ่านไม่ได้) ถ้าจะอ่านต้องผ่านProtocol
+        - ถ้าเรา set Http + Secure cookiesจะส่งผ่านได้แค่httpsได้เท่านั้น
+        - ข้อดีข้อเสีย
+            - ข้อมูลมีการเก็บวันหมดอายุขึ้นอยู่กับการใช้งาน
+            - สามารถส่งผ่าน Clientกับ Serverได้
+            - มีการส่ง Data Tranfer ผ่าน Protocol ได้
+            - ข้อจำกัดในการส่งผ่านNetwork ได้แค่ 4kb ต่อ Cookies
+            - ไม่ปลอดภัยในการaccess ผ่าน Third Party
     - Session Storage
-        -
-        -
-        -
-        -
+        - ปิด browser ปิด Tab ข้อมูลหายหมด
+        - ส่งได้เฉพาะ Client
+        - ไม่มีการส่ง Data Tranfer ผ่าน Protocol ได้
+        - ไม่ส่งผ่านServerกับ Network ทำให้เก็บได้มากถึง 5mb
+        - ทั้งคนและjs สามารถเข้ามาอ่าน Client Storage ของตัว Local ได้เลย
     - Local Storage
-        - ใช้ได้ตลอดไม่มีวันหมดอายุ แต่มีความเสี่ยงความเสียหาย
-        -
-        -
-        - 
+        - ใช้งานข้อมูลได้ตลอดไม่มีวันหมดอายุ ถ้าไม่ได้ไปสั่งลบ แต่มีความเสี่ยงความเสียหาย
+        - ส่งได้เฉพาะ Client
+        - ไม่มีการส่ง Data Tranfer ผ่าน Protocol ได้
+        - ไม่ส่งผ่านServerกับ Network ทำให้เก็บได้มากถึง 5mb
+         - ทั้งคนและjs สามารถเข้ามาอ่าน Client Storage ของตัว Local ได้เลย
+- ถ้าต้องการเก็บข้อมูล ที่ไม่sensitive และไม่มีความจำเป็นที่ต้องส่งไปที่Server
+    - ควรเลือก Session Storage กับ Local Storage
+- ถ้าต้องการส่งข้อมูลไปติดต่อกับ Server ให้ Protocol Http ให้มันจดจำการติดต่อของClientคนนั้นได้
+    - ควรเลือก Cookies
 
+System of the Set-Cookies HTTP Response Header(ฝั่งServer)
+        set-Cookie: NAME=VALUE; expires=DATE; path=PATH; domain=DOMAIN_NAME; secure; HttpOnly
+    - NAME=VALUE => ต้องเป็นStringที่ไม่รวม semi-colon,commaและwhite space
+    - expires=DATE => ใส่Date(format => DD-Mon-YYYY HH:MM:SS GMT) Default ถ้าไม่ใส่expireคือถ้าปิดbrowserก็หมดอายุแล้ว
+    - domain=DOMAIN_NAME => ตอนเราreqไปที่resourceไหนของฝั่งserver Defaultก็จะเป็นDomainนั้น
+    - path=PATH => ถ้าเราติดต่อPathไหนเราก้จะได้Pathนั้น
+    - secure => Cookies จะส่งไปที่ตัวSecure Protocolเท่านั้น แต่ถ้าไม่ระบุก็คือSecureหรือUnsecereก้ได้
+    - Httponly => ไม่สามารถ accessผ่านตัวjsได้
+    - ตัวอย่างการสร้าง
+        -  set-Cookie: sessionID=abc123; expires=Wed, 16 Oct 2025 18:0:0 GMT; path=/dashboard; domain=example.com; secure; HttpOnly
+            - ชื่อ Cookies:sessionID ค่าCookies: abc123 
+            - หมดอายุ: 16 ต.ค 2025
+            - ใช้ได้กับทุกหน้าภายใต้ /dashboard ของ example.com หรือ Domainย่อย(subdomain) ของ example.com
+                - เช่น shop.example.com, blog.example.com
+            - ส่งได้เฉพาะผ่าน HTTPS
+            - JS เข้าถึงหรือค่าไม่ได้
 
+Cookie Path
+    - ตัวอย่าง 
+        - Set-Cookie: lang=th; path=/;
+            - / = ส่ง
+            - /shop = ส่ง
+            - /new/latest = ส่ง
+        - Set-Cookie: token=abc; path=/account;
+            - /account = ส่ง
+            - /account/login = ส่ง
+            - /account/setting = ส่ง
+            - /shop = ไม่ส่ง
+            - /home = ไม่ส่ง
+        - Set-Cookie: promoCode=2025; path=/shop/deals;
+            - /shop/deals = ส่ง
+            - /shop/deals/today = ส่ง
+            - /shop = ไม่ส่ง
+            - /shop/cart = ไม่ส่ง
 
+Cookie Type
+    - First-party cookie คือ Cookieที่เราสร้างโดย domain กับ Path ที่เราติดต่อ
+    - Third-party cookie คือ domain อื่นที่แอบแฝงเข้ามาในตัวWebที่เราติดต่อด้วย
+        - ถ้าเราต้องการBlog Third-party
+            - เข้าไปที่ setting > Pivacy and Security > Third-party cookie >ฺ Blog Third-party cookie
+
+Cookie in Js
+    - ตัวข้อมูลcookiesทั้งหมดอยู่ภายใต้ document object
+    - เวลาเรียกใช้เรียกใช้ผ่าน document.cookie
+    - document.cookie ข้อมูลของcookieที่เก้บอยุ่บนbrowser
+    - เวลาเราเรียกdocument.cookieมันมาทั้งหมดเลย
+    - เวลาเราเรียกdocument.cookieคือการอ่านค่า ถ้าเราจะsetค่าให้ใช้เครื่องหมาย=
+
+encodeURIComponent()
+    - มันจะ converseตัวสัญลักษณ์พิเศษของมันทั้งหมดให้กลายเป็นรหัสอื่น

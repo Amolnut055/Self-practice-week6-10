@@ -47,6 +47,38 @@ Way of using Web Event
                 }
                 btn.addEventListener("click", handler, false)
                 btn.removeEventListener("click", handler, false)
+Event Properties
+    - eventPhase
+        - มันจะคืนค่าเป็นเลข 1 2 3 ตาม Flow ที่มันไหล
+            - 1 หมายถึงมันจะอยู้ที่ capturing phase
+            - 2 หมายถึงมันจะอยู้ที่ target phase
+            - 3 หมายถึงมันจะอยู้ที่ Bubbling phase
+    - target
+            - ตัวที่ถูกคลิกจริงๆ (element ที่เกิดเหตุการณ์จริง)
+    - currentTarget
+            - “ตัวที่ event listener ถูกผูกอยู่”
+    - preventDefault()
+        - หยุดพฤติกรรมปกติของ element”
+            - เช่น ไม่ให้ลิงก์เปลี่ยนหน้า, ไม่ให้ฟอร์มส่งข้อมูล, ไม่ให้ติ๊ก checkbox
+
+Event type 
+    - Event Categories
+        - State change events
+            - ใช้ตรวจจับ “การเปลี่ยนแปลงสถานะของหน้าเว็บหรือ element”
+            - ตรวจการเปลี่ยนแปลงของหน้า/องค์ประกอบ
+        - Focus events  
+            - เกิดเมื่อ element ได้รับหรือเสีย “focus” 
+                - เช่น cursor อยู่ในช่อง input
+        - Mouse events
+            - ใช้ตรวจจับการคลิก การเลื่อน หรือการเคลื่อนเมาส์
+            - การคลิกหรือเคลื่อนเมาส์
+        - Keyboard events
+            - ใช้ตรวจจับการกด/ปล่อยปุ่มคีย์บอร์ด
+            - การกดหรือปล่อยปุ่ม
+        - Input events
+            - ตรวจจับเมื่อค่าของช่อง input, textarea, หรือ select เปลี่ยนระหว่างพิมพ์
+            - การพิมพ์หรือส่งฟอร์ม
+
 
 
 
